@@ -1,0 +1,52 @@
+digraph g {
+    // header
+    rankdir=LR;
+    margin=0.01;
+    node [shape="plaintext"];
+    edge [arrowhead="diamond"];
+    // circuit 
+    and2910 [label="(((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA)) and not(full_adderCin))", image="../../gates/and_noleads.png"];
+    and2920 [label="(not(full_adderA) and full_adderB)", image="../../gates/and_noleads.png"];
+    and2930 [label="(not(full_adderB) and full_adderA)", image="../../gates/and_noleads.png"];
+    and2953 [label="(not(((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA))) and full_adderCin)", image="../../gates/and_noleads.png"];
+    and3169 [label="(((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA)) and full_adderCin)", image="../../gates/and_noleads.png"];
+    and3178 [label="(full_adderA and full_adderB)", image="../../gates/and_noleads.png"];
+    not2875 [label="not(full_adderB)", image="../../gates/not_noleads.png"];
+    not2898 [label="not(full_adderCin)", image="../../gates/not_noleads.png"];
+    not2945 [label="not(((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA)))", image="../../gates/not_noleads.png"];
+    not3125 [label="not(full_adderA)", image="../../gates/not_noleads.png"];
+    or2896 [label="((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA))", image="../../gates/or_noleads.png"];
+    or2968 [label="((((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA)) and not(full_adderCin)) or (not(((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA))) and full_adderCin))", image="../../gates/or_noleads.png"];
+    or3193 [label="((((not(full_adderA) and full_adderB) or (not(full_adderB) and full_adderA)) and full_adderCin) or (full_adderA and full_adderB))", image="../../gates/or_noleads.png"];
+    var2519[label="full_adderS"];
+    var2529[label="full_adderCin"];
+    var2532[label="full_adderA"];
+    var2545[label="full_adderCout"];
+    var2558[label="full_adderB"];
+
+    var2532 -> not3125 ;
+    not3125 -> and2920 ;
+    var2558 -> and2920 ;
+    var2558 -> not2875 ;
+    not2875 -> and2930 ;
+    var2532 -> and2930 ;
+    and2920 -> or2896 ;
+    and2930 -> or2896 ;
+    or2896 -> and3169 ;
+    var2529 -> and3169 ;
+    var2532 -> and3178 ;
+    var2558 -> and3178 ;
+    and3169 -> or3193 ;
+    and3178 -> or3193 ;
+    var2529 -> not2898 ;
+    or2896 -> and2910 ;
+    not2898 -> and2910 ;
+    or2896 -> not2945 ;
+    not2945 -> and2953 ;
+    var2529 -> and2953 ;
+    and2910 -> or2968 ;
+    and2953 -> or2968 ;
+    or3193 -> var2545 ;
+    or2968 -> var2519 ;
+
+}

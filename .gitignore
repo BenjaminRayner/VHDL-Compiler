@@ -1,0 +1,5 @@
+*.swp
+/bin/
+/build/
+/report/
+RunAlloy351.als
